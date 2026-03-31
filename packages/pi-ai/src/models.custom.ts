@@ -194,4 +194,28 @@ export const CUSTOM_MODELS = {
 			compat: { thinkingFormat: "zai", supportsDeveloperRole: false },
 		} satisfies Model<"openai-completions">,
 	},
+
+	// ─── GitHub Copilot Enterprise (1M) ──────────────────────────────────
+	// Enterprise-tier Copilot model with 1M context window.
+	// Not in models.dev catalog — defined here so work preferences resolve.
+	"github-copilot": {
+		"claude-opus-4.6-1m": {
+			id: "claude-opus-4.6-1m",
+			name: "Claude Opus 4.6 1M",
+			api: "anthropic-messages",
+			provider: "github-copilot",
+			baseUrl: "https://api.individual.githubcopilot.com",
+			headers: {"User-Agent":"GitHubCopilotChat/0.35.0","Editor-Version":"vscode/1.107.0","Editor-Plugin-Version":"copilot-chat/0.35.0","Copilot-Integration-Id":"vscode-chat"},
+			reasoning: true,
+			input: ["text", "image"],
+			cost: {
+				input: 0,
+				output: 0,
+				cacheRead: 0,
+				cacheWrite: 0,
+			},
+			contextWindow: 1048576,
+			maxTokens: 64000,
+		} satisfies Model<"anthropic-messages">,
+	},
 } as const;
